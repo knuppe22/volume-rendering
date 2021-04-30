@@ -16,8 +16,11 @@ void main(){
 
 */
 
-	float voxelValue = texture(tex, vec3(0.5,0.5,0.5)).r; // read a value from 3D volume at the center (0.5,0.5,0.5)
-	vec4 trasferFunctionValue = texture(transferFunction, voxelValue); // read transfer function value 
+	// calculate entry and exit point
+	
+
+	float voxelValue = texture(tex, pixelPosition).r; // read a value from 3D volume at the center (0.5,0.5,0.5)
+	vec4 trasferFunctionValue = texture(transferFunction, voxelValue); // read transfer function value
 
 	gl_FragColor = trasferFunctionValue;
 }

@@ -5,6 +5,6 @@ out vec3 pixelPosition;
 
 void main()
 {
-    pixelPosition = vec3(gl_Vertex);
+    pixelPosition = (vec3(gl_Vertex) + vec3(1.0f)) / 2;
     gl_Position   = gl_Vertex;
 }
