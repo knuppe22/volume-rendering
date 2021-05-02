@@ -39,7 +39,7 @@ void main(){
 			float alpha = color.a + (1.0 - color.a) * transferFunctionValue.a;
 			color = vec4(rgb, alpha);
 
-			if (color.a > 0.9) break;
+			if (color.a > 0.95) break;
 			position += dt * rayDirection;
 		}
 		gl_FragColor = color;
@@ -49,7 +49,6 @@ void main(){
 		dt = 0.01f;
 		int level = 0;
 		vec3 lastPosition = position;
-		vec3 light = normalize(vec3(-1.0, -1.0, -1.0));
 		while (all(lessThanEqual(vec3(-1.0), position)) && all(lessThanEqual(position, vec3(1.0)))) {
 			vec3 texCoord = (position + vec3(1.0)) / 2;
 			float voxelValue = texture(tex, texCoord).r;
@@ -70,6 +69,7 @@ void main(){
 					vec3 normal = -normalize(vec3(dx, dy, dz));
 
 					// phong lighting
+					vec3 light = normalize(vec3(-1.0, -1.0, -1.0));
 					vec3 diffuse = max(dot(light, normal), 0.0) * vec3(1.0, 0.0, 0.0);
 				
 					vec3 reflect = 2.0 * dot(light, normal) * normal - light;
