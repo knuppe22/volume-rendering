@@ -11,6 +11,9 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
+# User-specific files
+*.user
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
